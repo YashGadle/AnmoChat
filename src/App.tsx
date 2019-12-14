@@ -1,30 +1,19 @@
 import React, { Fragment } from 'react';
 
-import {
-	SafeAreaView,
-	StyleSheet,
-	ScrollView,
-	View,
-	Text,
-	StatusBar
-} from 'react-native';
+import { SafeAreaView, Text, StatusBar } from 'react-native';
 
-import {
-	Header,
-	LearnMoreLinks,
-	Colors,
-	DebugInstructions,
-	ReloadInstructions
-} from 'react-native/Libraries/NewAppScreen';
+import Login from './screens/Login';
+
+import { ApolloAPI } from './components/Apollo';
 
 const App = () => {
 	return (
-		<Fragment>
+		<ApolloAPI token="">
 			<StatusBar barStyle="dark-content" />
 			<SafeAreaView>
-				<Text>Yash gadle is a beast</Text>
+				<Login />
 			</SafeAreaView>
-		</Fragment>
+		</ApolloAPI>
 	);
 };
 

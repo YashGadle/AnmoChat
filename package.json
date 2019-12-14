@@ -18,7 +18,8 @@
     "apollo-link-ws": "^1.0.19",
     "graphql": "^14.5.8",
     "react": "16.8.6",
-    "react-native": "0.60.3"
+    "react-native": "0.60.3",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
