@@ -15,31 +15,24 @@ import { ACCESS_DENIED } from '../../constants/Errors';
 
 function getToken() {
 	try {
-		const token = JSON.parse(localStorage.getItem('gotrue.user')).token
-			.access_token;
+		const token = '';
 		return token;
 	} catch (err) {
 		return '';
 	}
 }
 
-export const ApolloProviderCustom: React.FC<{ token: string }> = props => {
+export const ApolloAPI: React.FC<{ token: string }> = props => {
 	const { children } = props;
 
-	// let wsLink: WebSocketLink;
-	// let httpLink: HttpLink;
-	// let link: ApolloLink;
-	// let cache: InMemoryCache;
-	// let request: (operation: Operation) => void;
-	// let requestLink: ApolloLink;
-
 	const wsLink = new WebSocketLink({
-		uri: process.env.REACT_APP_API_WS,
+		uri: 'wss://anmo-chat.herokuapp.com/v1/graphql',
 		options: {
 			reconnect: true,
 			connectionParams: {
 				headers: {
 					'content-type': 'application/json',
+					'x-hasura-admin-secret': 'yashgadle',
 					Authorization: 'Bearer ' + getToken()
 				}
 			}
@@ -47,7 +40,7 @@ export const ApolloProviderCustom: React.FC<{ token: string }> = props => {
 	});
 
 	const httpLink = new HttpLink({
-		uri: `${process.env.REACT_APP_API_URL}`,
+		uri: 'https://anmo-chat.herokuapp.com/v1/graphql',
 		credentials: 'include'
 	});
 
@@ -73,6 +66,7 @@ export const ApolloProviderCustom: React.FC<{ token: string }> = props => {
 		operation.setContext({
 			headers: {
 				'content-type': 'application/json',
+				'x-hasura-admin-secret': 'yashgadle',
 				Authorization: 'Bearer ' + getToken()
 			}
 		});

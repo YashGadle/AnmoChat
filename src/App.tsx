@@ -2,14 +2,18 @@ import React, { Fragment } from 'react';
 
 import { SafeAreaView, Text, StatusBar } from 'react-native';
 
+import Login from './screens/Login';
+
+import { ApolloAPI } from './components/Apollo';
+
 const App = () => {
 	return (
-		<Fragment>
+		<ApolloAPI token="">
 			<StatusBar barStyle="dark-content" />
 			<SafeAreaView>
-				<Text>Yash gadle is a beast</Text>
+				<Login />
 			</SafeAreaView>
-		</Fragment>
+		</ApolloAPI>
 	);
 };
 
