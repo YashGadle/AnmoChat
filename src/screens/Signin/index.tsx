@@ -15,16 +15,18 @@ import {
 	Button,
 	Text
 } from '@ui-kitten/components';
+
 import { styles } from './styles';
 
 interface Props {
-	email: string;
+	alias: string;
 	password: string;
+	onSignin: (alias: string, password: string) => void;
 }
 
-export const Login: React.FC<Props> = props => {
-	const [email, setEmail] = useState(props.email);
-	const [emailInvalid, setEmailInvalid] = useState('');
+export const Signin: React.FC<Props> = props => {
+	const [alias, setAlias] = useState(props.alias);
+	const [aliasInvalid, setAliasInvalid] = useState('');
 
 	const [password, setPassword] = useState(props.password);
 	const [passwordInvalid, setPasswordInvalid] = useState('');
@@ -37,12 +39,13 @@ export const Login: React.FC<Props> = props => {
 
 	const onPasswordVisibilityToggleIconPress = () => setSecureText(!secureText);
 
-	const onEmailChange = (text: string) => setEmail(text);
+	const onAliasChange = (text: string) => setAlias(text);
 
 	const onPasswordChange = (text: string) => setPassword(text);
 
 	const onSubmit = () => {
-		//TODO: Call login service and store in realm
+		//TODO: Call Signin service and store in realm
+		props.onSignin(alias, password);
 	};
 
 	return (
@@ -56,17 +59,18 @@ export const Login: React.FC<Props> = props => {
 					behavior={Platform.OS === 'ios' ? 'padding' : null}
 				>
 					<Input
-						label="Email Address"
-						placeholder="thomas.shelby@shelbycorp.com"
-						value={email}
+						label="Alias"
+						placeholder="Create a unique nickname like - sweet potato"
+						value={alias}
 						autoFocus
+						maxLength={20}
 						textContentType="emailAddress"
 						autoCapitalize="none"
-						onChangeText={onEmailChange}
+						onChangeText={onAliasChange}
 					/>
 					<Input
 						label="Password"
-						placeholder="********"
+						placeholder="Enter a strong password"
 						value={password}
 						secureTextEntry={secureText}
 						icon={renderPasswordVisibilityToggleIcon}
@@ -83,4 +87,4 @@ export const Login: React.FC<Props> = props => {
 	);
 };
 
-export default Login;
+export default Signin;
