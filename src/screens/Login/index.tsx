@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-import { SafeAreaView, View, KeyboardAvoidingView } from 'react-native';
+import {
+	SafeAreaView,
+	View,
+	KeyboardAvoidingView,
+	Platform
+} from 'react-native';
 
 import {
 	Layout,
@@ -46,7 +51,10 @@ export const Login: React.FC<Props> = props => {
 				<View>
 					<Text category="h2">Anmo Chat</Text>
 				</View>
-				<KeyboardAvoidingView style={styles.textInputContainer}>
+				<KeyboardAvoidingView
+					style={styles.textInputContainer}
+					behavior={Platform.OS === 'ios' ? 'padding' : null}
+				>
 					<Input
 						label="Email Address"
 						placeholder="thomas.shelby@shelbycorp.com"
