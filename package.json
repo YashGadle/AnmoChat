@@ -28,6 +28,7 @@
     "react-native-safe-area-context": "^0.3.6",
     "react-native-screens": "^1.0.0-alpha.23",
     "react-native-svg": "^9.13.6",
+    "realm": "^3.6.0",
     "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
