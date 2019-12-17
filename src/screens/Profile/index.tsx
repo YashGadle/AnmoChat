@@ -9,7 +9,7 @@ interface Props {
 	onSignout: () => void;
 }
 
-const Profile: React.FC<Props> = props => {
+export const Profile: React.FC<Props> = props => {
 	const { onSignout, userDetails } = props;
 
 	return (

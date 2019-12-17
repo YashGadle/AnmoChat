@@ -10,7 +10,7 @@ interface Props {
 	navigation: StackNavigationProp<any>;
 }
 
-const Home: React.FC<Props> = props => {
+export const Home: React.FC<Props> = props => {
 	const { navigation } = props;
 
 	const navigateProfile = () => {
